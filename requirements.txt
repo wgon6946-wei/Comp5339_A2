@@ -2,3 +2,10 @@ requests
 pandas
 tqdm
 paho-mqtt
+
+
+duckdb
+streamlit
+streamlit-folium
+streamlit-autorefresh
+folium

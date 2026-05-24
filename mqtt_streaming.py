@@ -8,7 +8,7 @@ import paho.mqtt.client as mqtt
 # MQTT Configuration
 # =========================
 
-MQTT_BROKER = "broker.hivemq.com"
+MQTT_BROKER = "localhost"
 MQTT_PORT = 1883
 MQTT_TOPIC = "comp5339/A2group26/electricity/facility_stream"
 
@@ -253,16 +253,26 @@ def run_continuous_streaming(
 
 if __name__ == "__main__":
     # Demo mode: publish only 30 messages for testing.
-    run_one_streaming_cycle(
-        csv_path="integrated_power_emissions_data.csv",
-        delay_between_messages=0.1,
-        max_messages_per_cycle=30
-    )
+    #run_one_streaming_cycle(
+    #    csv_path="integrated_power_emissions_data.csv",
+    #    delay_between_messages=0.1,
+    #    max_messages_per_cycle=30
+    #)
 
     # To run continuous streaming, comment out the demo above and uncomment below:
-    # run_continuous_streaming(
-    #     csv_path="integrated_power_emissions_data.csv",
-    #     delay_between_messages=0.1,
-    #     delay_between_cycles=60,
-    #     max_messages_per_cycle=30
-    # )
+     run_continuous_streaming(
+         csv_path="integrated_power_emissions_data.csv",
+         delay_between_messages=0.1,
+         delay_between_cycles=60,
+         max_messages_per_cycle=300
+     )
+
+
+# Please note: If you want to publish all records, you can use the code below：
+# ！！！Note, however, that running all 710,385 records takes approximately 19.7 hours per cycle.
+#run_continuous_streaming(
+#    csv_path="integrated_power_emissions_data.csv",
+#    delay_between_messages=0.1,
+#   delay_between_cycles=60,
+#    max_messages_per_cycle=None
+#)
